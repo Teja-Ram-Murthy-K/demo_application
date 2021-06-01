@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:demo_application/constants/constants.dart';
+import 'package:demo_application/quiz-screens/quiz_home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:hive/hive.dart';
@@ -56,6 +57,21 @@ class _TopicDetailPageState extends State<TopicDetailPage> {
       appBar: AppBar(
         title: Text(widget.title),
         backgroundColor: Colors.black54,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.question_answer),
+            tooltip: "Play Quiz",
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) =>
+                          QuizHomePage(
+                            title: widget.title,
+                          )));
+            },
+          )
+        ],
       ),
       floatingActionButton: new FloatingActionButton(
           elevation: 0.0,
